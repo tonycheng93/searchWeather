@@ -64,7 +64,7 @@ public class MainActivity extends ActionBarActivity {
 
 		// 不能直接在后面加上mQuery.getText().toString(),必须经过转码以后才正确
 		/**
-		 * 对输入的查询字符串进行转码，否则无法查询
+		 * 对输入的查询字符串进行转码，否则无法查询。
 		 */
 		String address = "http://apis.baidu.com/apistore/weatherservice/cityname?cityname="
 				+ URLEncoder.encode(mQuery.getText().toString());
