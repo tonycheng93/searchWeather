@@ -13,10 +13,12 @@ public class ParseJSON {
 	public static Context mContext;
 	public static Gson gson;
 	public static Weather weather;
-	public ParseJSON(Context context){
+
+	public ParseJSON(Context context) {
 		this.mContext = context;
 	}
-	public static void parseJson(String jsonData){
+
+	public static void parseJson(String jsonData) {
 		JSONObject json = null;
 		try {
 			json = new JSONObject(jsonData);
@@ -24,12 +26,16 @@ public class ParseJSON {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		/**
+		 * 增加对retData是否为空的判断，避免出现输入地区不存在时，出现空指针异常
+		 */
 		JSONObject retData = json.optJSONObject("retData");
 		if (retData != null) {
 			gson = new Gson();
 			weather = gson.fromJson(jsonData, Weather.class);
-		}else {
-			Toast.makeText(mContext,"请确认您输入的地区名称正确", Toast.LENGTH_SHORT).show();
+		} else {
+			Toast.makeText(mContext, "请确认您输入的地区名称正确", Toast.LENGTH_SHORT)
+					.show();
 		}
 	}
 }
